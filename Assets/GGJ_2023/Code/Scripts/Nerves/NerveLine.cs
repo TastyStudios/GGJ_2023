@@ -28,5 +28,9 @@ namespace GGJ_2023 {
             Destroy(gameObject);
             yield break;
         }
+
+        public List<NervePoint> GetNervPointList() {
+            return nervePointList;
+        }
     }
 }

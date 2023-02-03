@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using GGJ_2023.Nerves;
 using UnityEngine;
 
 namespace GGJ_2023.Character {
     public class CharacterInteract : MonoBehaviour {
-        [SerializeField] private NerveLine nerveLine;
+        [SerializeField] private NerveLine nervLinePrefab;
         
+        private NerveLine nerveLine;
         private HashSet<NervePoint> nervePointsInRange;
         private NervePoint currentNervePoint;
 
@@ -63,8 +65,21 @@ namespace GGJ_2023.Character {
 
         public void Interact() {
             if (currentNervePoint == null) return;
-            
+
+            if (nerveLine == null) {
+                nerveLine = Instantiate(nervLinePrefab);
+            }
+
             nerveLine.AddNerve(currentNervePoint);
+            
+            if (currentNervePoint.NervePointType == NervePointType.Brain) {
+                List<NervePoint> nervePoints = nerveLine.GetNervPointList();
+                
+                GameManager.Instance.CompleteChain(nervePoints);
+
+                nerveLine.DestroySelf();
+                nerveLine = null;
+            }
         }
     }
 }
