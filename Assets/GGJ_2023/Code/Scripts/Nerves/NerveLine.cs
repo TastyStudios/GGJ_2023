@@ -25,7 +25,7 @@ namespace GGJ_2023 {
         }
         
         private IEnumerator DestroySelfRoutine() {
-            Destroy(gameObject);
+            Destroy(gameObject, 3);
             yield break;
         }
 

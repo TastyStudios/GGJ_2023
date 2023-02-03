@@ -67,6 +67,10 @@ namespace GGJ_2023.Character {
             if (currentNervePoint == null) return;
 
             if (nerveLine == null) {
+                if (currentNervePoint.NervePointType == NervePointType.Brain) {
+                    return;
+                }
+
                 nerveLine = Instantiate(nervLinePrefab);
             }
 

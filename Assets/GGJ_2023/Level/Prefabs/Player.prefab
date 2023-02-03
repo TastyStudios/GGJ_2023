@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca87ffeb40c48eea39805124c07d8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nerveLine: {fileID: 0}
+  nervLinePrefab: {fileID: 0}
 --- !u!1 &6294223083734393454
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6294223083734393455}
   - component: {fileID: 6294223083734393452}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: InteractionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
