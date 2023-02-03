@@ -1,6 +1,6 @@
-﻿namespace GGJ_2023 {
+﻿namespace GGJ_2023.Nerves {
     public enum NervePointType {
-        Arm,
+        Arm = 1,
         
     }
 }

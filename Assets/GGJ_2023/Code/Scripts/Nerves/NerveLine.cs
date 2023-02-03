@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,15 @@ namespace GGJ_2023 {
             nervePointList.Add(nervePoint);
             lineRenderer.positionCount++;
             lineRenderer.SetPosition(lineRenderer.positionCount - 1, nervePoint.transform.position);
+        }
+
+        public void DestroySelf() {
+            StartCoroutine(DestroySelfRoutine());
+        }
+        
+        private IEnumerator DestroySelfRoutine() {
+            Destroy(gameObject);
+            yield break;
         }
     }
 }

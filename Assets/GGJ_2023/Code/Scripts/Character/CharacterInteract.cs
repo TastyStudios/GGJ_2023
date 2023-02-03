@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GGJ_2023 {
-    public class PlayerInteract : MonoBehaviour {
+namespace GGJ_2023.Character {
+    public class CharacterInteract : MonoBehaviour {
         [SerializeField] private NerveLine nerveLine;
         
         private HashSet<NervePoint> nervePointsInRange;

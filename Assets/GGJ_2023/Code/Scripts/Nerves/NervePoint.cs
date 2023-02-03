@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GGJ_2023.Nerves;
+using UnityEngine;
 
 namespace GGJ_2023 {
     public class NervePoint : MonoBehaviour {
