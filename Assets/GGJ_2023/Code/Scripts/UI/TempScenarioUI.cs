@@ -11,12 +11,12 @@ namespace GGJ_2023.UI {
         private void Start() {
             gameManager = GameManager.Instance;
             
-            gameManager.OnSenarioChanged += GameManagerOnOnSenarioChanged;
+            gameManager.OnScenarioChanged += GameManagerOnOnScenarioChanged;
             
             RefreshUI();
         }
 
-        private void GameManagerOnOnSenarioChanged(Scenario obj) {
+        private void GameManagerOnOnScenarioChanged(Scenario obj) {
             RefreshUI(obj);
         }
 

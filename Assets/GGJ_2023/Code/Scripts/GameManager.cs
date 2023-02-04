@@ -11,7 +11,7 @@ namespace GGJ_2023
     {
         public static GameManager Instance { get; private set; }
 
-        public event Action<Scenario> OnSenarioChanged; 
+        public event Action<Scenario> OnScenarioChanged; 
 
         [SerializeField]
         private SpriteRenderer screen;
@@ -42,7 +42,7 @@ namespace GGJ_2023
             Debug.Log($"Loading scenario #{r} ({currentScenario.NervePoints[0].BodyPart} -> {currentScenario.NervePoints[0].Sense})");
             screen.sprite = currentScenario.Sprite;
             
-            OnSenarioChanged?.Invoke(currentScenario);
+            OnScenarioChanged?.Invoke(currentScenario);
         }
 
 
