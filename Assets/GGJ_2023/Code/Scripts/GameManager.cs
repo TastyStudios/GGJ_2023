@@ -1,13 +1,17 @@
+using System;
 using GGJ_2023.Nerves;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GGJ_2023
 {
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
+
+        public event Action<Scenario> OnScenarioChanged; 
 
         [SerializeField]
         private SpriteRenderer screen;
@@ -37,6 +41,8 @@ namespace GGJ_2023
             currentScenario = scenarios[r];
             Debug.Log($"Loading scenario #{r} ({currentScenario.NervePoints[0].BodyPart} -> {currentScenario.NervePoints[0].Sense})");
             screen.sprite = currentScenario.Sprite;
+            
+            OnScenarioChanged?.Invoke(currentScenario);
         }
 
 
@@ -72,6 +78,10 @@ namespace GGJ_2023
 
             Debug.Log($"Missing {wantedConnections.Count} connections");
             return wantedConnections.Count == 0;
+        }
+
+        public Scenario GetCurrentScenario() {
+            return currentScenario;
         }
     }
 }
