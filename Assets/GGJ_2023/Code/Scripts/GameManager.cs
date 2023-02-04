@@ -99,6 +99,10 @@ namespace GGJ_2023
             return currentScenario;
         }
 
+        public float GetTime() {
+            return time;
+        }
+        
         public void Restart() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
