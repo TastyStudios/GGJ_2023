@@ -72,6 +72,8 @@ namespace GGJ_2023.Character {
                 }
 
                 nerveLine = Instantiate(nervLinePrefab);
+                // TODO: Move to actual hand position
+                nerveLine.PlayerHand = transform;
             }
 
             nerveLine.AddNerve(currentNervePoint);

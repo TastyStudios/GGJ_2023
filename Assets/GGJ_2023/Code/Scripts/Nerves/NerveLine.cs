@@ -8,8 +8,19 @@ namespace GGJ_2023.Nerves {
         [SerializeField] private LineRenderer lineRenderer;
         private List<NervePoint> nervePointList;
 
+        [NonSerialized] public Transform PlayerHand;
+
         private void Awake() {
             nervePointList = new List<NervePoint>();
+            lineRenderer.positionCount = 1;
+        }
+
+        private void Update()
+        {
+            if(PlayerHand != null)
+            {
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, PlayerHand.position);
+            }
         }
 
         public void AddNerve(NervePoint nervePoint) {
@@ -17,10 +28,13 @@ namespace GGJ_2023.Nerves {
             
             nervePointList.Add(nervePoint);
             lineRenderer.positionCount++;
-            lineRenderer.SetPosition(lineRenderer.positionCount - 1, nervePoint.transform.position);
+            lineRenderer.SetPosition(lineRenderer.positionCount - 2, nervePoint.transform.position);
         }
 
         public void DestroySelf() {
+            lineRenderer.positionCount--;
+            PlayerHand = null;
+
             StartCoroutine(DestroySelfRoutine());
         }
         
