@@ -9,7 +9,7 @@ namespace GGJ_2023.Character {
         private static readonly int Jump = Animator.StringToHash("Jump");
 
         private void Start() {
-            characterController2D.OnJump += CharacterController2DOnOnJump;
+            characterController2D.OnJump += CharacterController2DOnJump;
             characterController2D.OnLand += CharacterController2DOnOnLand;
             characterController2D.OnMove += CharacterController2DOnOnMove;
         }
@@ -26,8 +26,8 @@ namespace GGJ_2023.Character {
             // Might not need
         }
 
-        private void CharacterController2DOnOnJump() {
-            
+        private void CharacterController2DOnJump() {
+            // Might not need
         }
     }
 }
