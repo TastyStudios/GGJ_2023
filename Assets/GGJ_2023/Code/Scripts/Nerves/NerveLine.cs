@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GGJ_2023 {
+namespace GGJ_2023.Nerves {
     public class NerveLine : MonoBehaviour {
         [SerializeField] private LineRenderer lineRenderer;
         private List<NervePoint> nervePointList;
@@ -25,8 +25,13 @@ namespace GGJ_2023 {
         }
         
         private IEnumerator DestroySelfRoutine() {
-            Destroy(gameObject, 3);
-            yield break;
+            for (var t = 1f; t>0; t -= Time.deltaTime / 3)
+            {
+                // Waste to make new material for this, but gamejam so I don't care (ITR)
+                lineRenderer.material.color = new Color(1, 1, 1, t);
+                yield return null;
+            }
+            Destroy(gameObject);
         }
 
         public List<NervePoint> GetNervPointList() {

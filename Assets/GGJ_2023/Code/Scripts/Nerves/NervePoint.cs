@@ -1,7 +1,6 @@
-﻿using GGJ_2023.Nerves;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GGJ_2023 {
+namespace GGJ_2023.Nerves {
     public class NervePoint : MonoBehaviour {
         [field: SerializeField] public NervePointType NervePointType { get; private set; }
         [SerializeField] private GameObject highlight;
