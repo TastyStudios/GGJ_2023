@@ -19,10 +19,9 @@ namespace GGJ_2023 {
 		private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 		private Vector3 m_Velocity = Vector3.zero;
 
-		[Header("Events")]
-		[Space]
-
-		public UnityEvent OnLandEvent;
+		public event Action OnLand;
+		public event Action OnJump;
+		public event Action<float, bool> OnMove;
 
 		[System.Serializable]
 		public class BoolEvent : UnityEvent<bool> { }
@@ -31,9 +30,6 @@ namespace GGJ_2023 {
 		private void Awake()
 		{
 			m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
-			if (OnLandEvent == null)
-				OnLandEvent = new UnityEvent();
 		}
 
 		private void FixedUpdate()
@@ -50,13 +46,15 @@ namespace GGJ_2023 {
 				{
 					m_Grounded = true;
 					if (!wasGrounded)
-						OnLandEvent.Invoke();
+						OnLand.Invoke();
 				}
 			}
 		}
 
 		public void Move(float move, bool jump)
 		{
+			OnMove?.Invoke(move, jump);
+			
 			//only control the player if grounded or airControl is turned on
 			if (m_Grounded || m_AirControl)
 			{
@@ -85,6 +83,7 @@ namespace GGJ_2023 {
 				// Add a vertical force to the player.
 				m_Grounded = false;
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				OnJump?.Invoke();
 			}
 		}
 
