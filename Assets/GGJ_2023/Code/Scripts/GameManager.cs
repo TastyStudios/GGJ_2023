@@ -35,8 +35,6 @@ namespace GGJ_2023
 
             Instance = this;
 
-            time = 0;
-            
             ChooseRandomScenario();
         }
 
@@ -56,6 +54,10 @@ namespace GGJ_2023
             currentScenario = scenarios[r];
             Debug.Log($"Loading scenario #{r} ({currentScenario.NervePoints[0].BodyPart} -> {currentScenario.NervePoints[0].Sense})");
             screen.sprite = currentScenario.Sprite;
+
+            time += 10;
+            
+            OnScenarioChanged?.Invoke(currentScenario);
         }
 
 
