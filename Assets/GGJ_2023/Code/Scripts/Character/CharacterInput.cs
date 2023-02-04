@@ -24,6 +24,14 @@ namespace GGJ_2023 {
             defaultControls.Movement.Interact.performed += InteractOnperformed;
         }
 
+        private void Start() {
+            GameManager.Instance.OnGameEnded += InstanceOnOnGameEnded;
+        }
+        
+        private void InstanceOnOnGameEnded(int obj) {
+            enabled = false;
+        }
+
         private void JumpOnperformed(InputAction.CallbackContext obj) {
             heldUp = true;
         }
@@ -35,6 +43,8 @@ namespace GGJ_2023 {
 
         private void OnDisable() {
             defaultControls.Disable();
+            direction = 0;
+            heldUp = false;
         }
         
         private void MoveOnperformed(InputAction.CallbackContext obj) {

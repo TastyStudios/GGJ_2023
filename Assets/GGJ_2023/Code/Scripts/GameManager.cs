@@ -3,6 +3,7 @@ using GGJ_2023.Nerves;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace GGJ_2023
@@ -11,6 +12,7 @@ namespace GGJ_2023
     {
         public static GameManager Instance { get; private set; }
 
+        public event Action<int> OnGameEnded;
         public event Action<Scenario> OnScenarioChanged; 
 
         [SerializeField]
@@ -20,6 +22,7 @@ namespace GGJ_2023
 
         private Scenario currentScenario;
         private int points;
+        private float time;
 
         private void Awake()
         {
@@ -32,7 +35,19 @@ namespace GGJ_2023
 
             Instance = this;
 
+            time = 0;
+            
             ChooseRandomScenario();
+        }
+
+        private void Update() {
+            time -= Time.deltaTime;
+
+            if (time < 0) {
+                OnGameEnded?.Invoke(points);
+                gameObject.SetActive(false);
+                return;
+            }
         }
 
         private void ChooseRandomScenario()
@@ -41,8 +56,6 @@ namespace GGJ_2023
             currentScenario = scenarios[r];
             Debug.Log($"Loading scenario #{r} ({currentScenario.NervePoints[0].BodyPart} -> {currentScenario.NervePoints[0].Sense})");
             screen.sprite = currentScenario.Sprite;
-            
-            OnScenarioChanged?.Invoke(currentScenario);
         }
 
 
@@ -82,6 +95,14 @@ namespace GGJ_2023
 
         public Scenario GetCurrentScenario() {
             return currentScenario;
+        }
+
+        public void Restart() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void Quit() {
+            Application.Quit();
         }
     }
 }
