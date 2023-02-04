@@ -2,6 +2,7 @@ using System;
 using GGJ_2023.Nerves;
 using System.Collections.Generic;
 using System.Linq;
+using GGJ_2023.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -35,6 +36,8 @@ namespace GGJ_2023
 
             Instance = this;
 
+            time = 120;
+            
             ChooseRandomScenario();
         }
 
@@ -67,12 +70,15 @@ namespace GGJ_2023
             if (CheckChain(nervePoints))
             {
                 points++;
+                AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
                 Debug.Log($"Success {points}");
                 ChooseRandomScenario();
             }
             else
             {
+                AudioManager.Instance.PlaySfx(Sfx.Fail, Vector2.zero);
                 Debug.Log("Failed");
+                ChooseRandomScenario();
             }
         }
 

@@ -22,18 +22,19 @@ namespace GGJ_2023.Audio {
             Instance = this;
         }
 
-        public void PlaySfx(Sfx sfx) {
+        public void PlaySfx(Sfx sfx, Vector2 position) {
             TaggedSfxClip taggedSfxClip = sfxClipList.First(x => x.EnumTag == sfx);
-            PlayGeneric(taggedSfxClip.AudioClip, sfxAudioSourcePrefab);
+            PlayGeneric(taggedSfxClip.AudioClip, position, sfxAudioSourcePrefab);
         }
 
-        public void PlayMusic(Music music, bool loop = false) {
+        public void PlayMusic(Music music, Vector2 position, bool loop = false) {
             TaggedMusicClip taggedMusicClip = musicClipList.First(x => x.enumTag == music);
-            PlayGeneric(taggedMusicClip.audioClip, musicAudioSourcePrefab, loop);
+            PlayGeneric(taggedMusicClip.audioClip, position, musicAudioSourcePrefab, loop);
         }
 
-        private void PlayGeneric(AudioClip audioClip, GameObject prefab, bool loop = false) {
+        private void PlayGeneric(AudioClip audioClip, Vector2 position, GameObject prefab, bool loop = false) {
             GameObject audioPlayer = Instantiate(prefab);
+            audioPlayer.transform.position = position;
             AudioSource audioSource = audioPlayer.GetComponent<AudioSource>();
             audioSource.clip = audioClip;
             audioSource.loop = loop;
