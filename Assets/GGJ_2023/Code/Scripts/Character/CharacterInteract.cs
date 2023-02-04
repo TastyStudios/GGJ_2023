@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GGJ_2023.Nerves;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace GGJ_2023.Character {
         private NerveLine nerveLine;
         private HashSet<NervePoint> nervePointsInRange;
         private NervePoint currentNervePoint;
+        public event Action<bool> OnGrabChanged;
 
         private void Awake() {
             nervePointsInRange = new HashSet<NervePoint>();
@@ -26,7 +28,6 @@ namespace GGJ_2023.Character {
             }
             
             currentNervePoint = nervePoint;
-            
         }
 
         private void OnTriggerEnter2D(Collider2D col) {
@@ -77,12 +78,14 @@ namespace GGJ_2023.Character {
             }
 
             nerveLine.AddNerve(currentNervePoint);
+            OnGrabChanged?.Invoke(true); // janky
             
             if (currentNervePoint.NervePointType == NervePointType.Brain) {
                 List<NervePoint> nervePoints = nerveLine.GetNervPointList();
                 
                 GameManager.Instance.CompleteChain(nervePoints);
 
+                OnGrabChanged?.Invoke(false); // janky
                 nerveLine.DestroySelf();
                 nerveLine = null;
             }

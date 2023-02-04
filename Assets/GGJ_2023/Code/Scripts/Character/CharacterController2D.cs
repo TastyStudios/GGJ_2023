@@ -26,7 +26,7 @@ namespace GGJ_2023 {
 
 		[System.Serializable]
 		public class BoolEvent : UnityEvent<bool> { }
-		
+
 
 		private void Awake()
 		{
