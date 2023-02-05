@@ -1512,6 +1512,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: ea209c6b0b2afa5408cfe39fd1084092, type: 3}
   - enumTag: 5
     audioClip: {fileID: 8300000, guid: 38fb0cb7c3ad7bd4e99710a417d285e0, type: 3}
+  - enumTag: 6
+    audioClip: {fileID: 8300000, guid: 029df7d27b40da640b3afef0f218ce89, type: 3}
   sfxClipList:
   - EnumTag: 1
     AudioClip: {fileID: 8300000, guid: a6a285e8fd8dbd141882ed626b04bbdc, type: 3}

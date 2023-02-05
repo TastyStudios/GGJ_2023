@@ -75,7 +75,7 @@ namespace GGJ_2023
         {
             time = 30;
             var difficulty = points / 2 + 1;
-            var music = (Music)(Mathf.Min((difficulty - 1) / 2 + 1, 5));
+            var music = (Music)(1 + Mathf.Min((difficulty - 1) / 2 + 1, 5));
             if (music != prevMusic)
             {
                 prevMusic = music;
