@@ -98,7 +98,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7f9f3ac7b2344c64cafe858f380211bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,8 +140,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0.991621, a: 1}
-      key1: {r: 1, g: 0, b: 0.991621, a: 1}
+      key0: {r: 0.5882353, g: 0.20392159, b: 0.14509805, a: 1}
+      key1: {r: 0.5882353, g: 0.20392159, b: 0.14509805, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

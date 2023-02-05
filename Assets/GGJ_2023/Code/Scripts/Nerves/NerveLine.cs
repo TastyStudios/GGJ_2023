@@ -39,10 +39,12 @@ namespace GGJ_2023.Nerves {
         }
         
         private IEnumerator DestroySelfRoutine() {
+            var color = lineRenderer.material.color;
             for (var t = 1f; t>0; t -= Time.deltaTime / 3)
             {
                 // Waste to make new material for this, but gamejam so I don't care (ITR)
-                lineRenderer.material.color = new Color(1, 1, 1, t);
+                color.a = t;
+                lineRenderer.material.color = color;
                 yield return null;
             }
             Destroy(gameObject);
