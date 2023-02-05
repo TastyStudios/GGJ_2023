@@ -23,8 +23,19 @@ namespace GGJ_2023.Nerves {
             }
         }
 
-        public void AddNerve(NervePoint nervePoint) {
-            if (nervePointList.Contains(nervePoint)) return;
+        public void AddNerve(NervePoint nervePoint)
+        {
+            var index = nervePointList.LastIndexOf(nervePoint);
+            if (index >= 0)
+            {
+                if(index == nervePointList.Count - 1)
+                {
+                    nervePointList.RemoveAt(index);
+                    lineRenderer.positionCount--;
+                    return;
+                }
+                if ((int)nervePoint.NervePointType < 100) return;
+            }
             
             nervePointList.Add(nervePoint);
             lineRenderer.positionCount++;
