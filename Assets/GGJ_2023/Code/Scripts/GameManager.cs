@@ -163,7 +163,6 @@ namespace GGJ_2023
             {
                 time -= difficulty - 7;
             }
-            time = 5;
             _somethingWrong = true;
 
             OnScenarioChanged?.Invoke(currentScenario);
