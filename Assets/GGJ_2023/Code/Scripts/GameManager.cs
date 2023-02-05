@@ -86,6 +86,18 @@ namespace GGJ_2023
             obj.SetActive(false);
         }
 
+        private IEnumerator PopupShort(GameObject obj)
+        {
+            obj.SetActive(true);
+            yield return new WaitForSeconds(0.25f);
+            obj.SetActive(false);
+            yield return new WaitForSeconds(0.25f);
+            obj.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            obj.SetActive(true);
+
+        }
+
         private IEnumerator CorrectThenNewScenario()
         {
             time = 30;
@@ -166,7 +178,7 @@ namespace GGJ_2023
                 IncrementScore();
                 AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
                 StartCoroutine(CorrectThenNewScenario());
-                StartCoroutine(Popup(_correct));
+                StartCoroutine(PopupShort(_correct));
             }
             else
             {
