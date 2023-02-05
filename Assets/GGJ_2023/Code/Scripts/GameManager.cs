@@ -100,7 +100,7 @@ namespace GGJ_2023
         private IEnumerator CorrectThenNewScenario()
         {
             time = 30;
-            var difficulty = 2;
+            var difficulty = points / 3 + 1;
             var music = (Music)(1 + Mathf.Min((difficulty - 1) / 2 + 1, 5));
             if (music != prevMusic)
             {
@@ -147,7 +147,7 @@ namespace GGJ_2023
                 var bodyPart = (NervePointType)bodyParts[r];
                 bodyParts.RemoveAt(r);
 
-                var sense = (NervePointType)Random.Range(100, 101);
+                var sense = (NervePointType)Random.Range(100, 103);
 
                 _pains[bodyPart].SetPain(sense);
                 currentScenario.NervePoints.Add(new NerveConnection(bodyPart, sense));
@@ -163,6 +163,7 @@ namespace GGJ_2023
             {
                 time -= difficulty - 7;
             }
+            time = 5;
             _somethingWrong = true;
 
             OnScenarioChanged?.Invoke(currentScenario);
