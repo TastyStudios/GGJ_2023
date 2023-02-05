@@ -25,7 +25,7 @@ namespace GGJ_2023
         private List<Scenario> scenarios;
 
         [SerializeField]
-        private GameObject _correctScreen, _wrongScreen;
+        private GameObject _goodScreen, _badScreen, _correct, _wrong, _warning;
 
         private Scenario currentScenario;
         private int points;
@@ -71,6 +71,21 @@ namespace GGJ_2023
             }
         }
 
+        private IEnumerator Popup(GameObject obj)
+        {
+            obj.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            obj.SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+            obj.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            obj.SetActive(false);
+            yield return new WaitForSeconds(0.3f);
+            obj.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+            obj.SetActive(false);
+        }
+
         private IEnumerator CorrectThenNewScenario()
         {
             time = 30;
@@ -96,11 +111,12 @@ namespace GGJ_2023
                 part.Hide();
             }
 
-            _correctScreen.SetActive(true);
-            _wrongScreen.SetActive(false);
+            _goodScreen.SetActive(true);
+            _badScreen.SetActive(false);
             yield return new WaitForSeconds(1.5f);
-            _correctScreen.SetActive(false);
-            _wrongScreen.SetActive(true);
+            _goodScreen.SetActive(false);
+            _badScreen.SetActive(true);
+            StartCoroutine(Popup(_warning));
             ChooseRandomScenario(difficulty);
         }
 
@@ -150,10 +166,12 @@ namespace GGJ_2023
                 IncrementScore();
                 AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
                 StartCoroutine(CorrectThenNewScenario());
+                StartCoroutine(Popup(_correct));
             }
             else
             {
                 AudioManager.Instance.PlaySfx(Sfx.Fail, Vector2.zero);
+                StartCoroutine(Popup(_wrong));
             }
         }
 
