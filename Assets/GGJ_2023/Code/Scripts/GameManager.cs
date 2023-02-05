@@ -15,7 +15,7 @@ namespace GGJ_2023
         public static GameManager Instance { get; private set; }
 
         public event Action<int> OnGameEnded;
-        public event Action<Scenario> OnScenarioChanged; 
+        public event Action<Scenario> OnScenarioChanged;
 
         [SerializeField]
         private SpriteRenderer screen;
@@ -29,6 +29,12 @@ namespace GGJ_2023
         private int points;
         private float time;
 
+        private bool _somethingWrong;
+
+        [SerializeField]
+        private List<BodyPain> _painList;
+        private Dictionary<NervePointType, BodyPain> _pains;
+
         private void Awake()
         {
             if (Instance != null)
@@ -38,43 +44,88 @@ namespace GGJ_2023
                 return;
             }
 
+            _pains = _painList.ToDictionary(pain => pain.BodyPart);
+            foreach(var pair in _pains)
+            {
+                Debug.Log(pair.Key, pair.Value);
+            }
+
             Instance = this;
 
-            time = 120;
-            
-            ChooseRandomScenario();
+            StartCoroutine(CorrectThenNewScenario());
         }
 
-        private void Update() {
-            time -= Time.deltaTime;
+        private void Update()
+        {
+            if (!_somethingWrong)
+            {
+                time -= Time.deltaTime;
+            }
 
-            if (time < 0) {
+            if (time < 0)
+            {
                 OnGameEnded?.Invoke(points);
                 gameObject.SetActive(false);
                 return;
             }
         }
 
-        private IEnumerator ShowScreen(GameObject screen)
+        private IEnumerator CorrectThenNewScenario()
         {
-            screen.SetActive(true);
-            yield return new WaitForSeconds(0.25f);
-            screen.SetActive(false);
-            yield return new WaitForSeconds(0.25f);
-            screen.SetActive(true);
+            time = 30;
+            var difficulty = points / 10 + 1;
+            if (difficulty > 7)
+            {
+                time -= difficulty - 7;
+            }
+            _somethingWrong = false;
+            foreach(var part in _painList)
+            {
+                part.Hide();
+            }
+
+            _correctScreen.SetActive(true);
+            _wrongScreen.SetActive(false);
             yield return new WaitForSeconds(1.5f);
-            screen.SetActive(false);
+            _correctScreen.SetActive(false);
+            _wrongScreen.SetActive(true);
+            ChooseRandomScenario(difficulty);
         }
 
-        private void ChooseRandomScenario()
+        private void ChooseRandomScenario(int difficulty)
         {
-            var r = Random.Range(0, scenarios.Count);
+            /*var r = Random.Range(0, scenarios.Count);
             currentScenario = scenarios[r];
             Debug.Log($"Loading scenario #{r} ({currentScenario.NervePoints[0].BodyPart} -> {currentScenario.NervePoints[0].Sense})");
-            screen.sprite = currentScenario.Sprite;
+            */
 
-            time += 10;
-            
+            currentScenario = ScriptableObject.CreateInstance<Scenario>();
+
+            var bodyParts = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
+            for (var i = 0; i < difficulty && i < bodyParts.Count; i++)
+            {
+                var r = Random.Range(0, bodyParts.Count);
+                var bodyPart = (NervePointType)bodyParts[r];
+                bodyParts.RemoveAt(r);
+
+                var sense = (NervePointType)Random.Range(100, 103);
+
+                _pains[bodyPart].SetPain(sense);
+                currentScenario.NervePoints.Add(new NerveConnection(bodyPart, sense));
+            }
+
+            foreach (var bodypart in bodyParts)
+            {
+                _pains[(NervePointType)bodypart].Hide();
+            }
+
+            time = 30;
+            if(difficulty > 7)
+            {
+                time -= difficulty - 7;
+            }
+            _somethingWrong = true;
+
             OnScenarioChanged?.Invoke(currentScenario);
         }
 
@@ -86,14 +137,12 @@ namespace GGJ_2023
             {
                 points++;
                 AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
-                StartCoroutine(ShowScreen(_correctScreen));
+                StartCoroutine(CorrectThenNewScenario());
             }
             else
             {
                 AudioManager.Instance.PlaySfx(Sfx.Fail, Vector2.zero);
-                StartCoroutine(ShowScreen(_wrongScreen));
             }
-            ChooseRandomScenario();
         }
 
         private bool CheckChain(List<NervePoint> nervePoints)
@@ -115,19 +164,23 @@ namespace GGJ_2023
             return wantedConnections.Count == 0;
         }
 
-        public Scenario GetCurrentScenario() {
+        public Scenario GetCurrentScenario()
+        {
             return currentScenario;
         }
 
-        public float GetTime() {
+        public float GetTime()
+        {
             return time;
         }
-        
-        public void Restart() {
+
+        public void Restart()
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        public void Quit() {
+        public void Quit()
+        {
             Application.Quit();
         }
     }

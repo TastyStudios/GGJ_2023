@@ -8,7 +8,7 @@ namespace GGJ_2023
     [CreateAssetMenu(fileName = "Scenario", menuName = "Scenario", order = 1)]
      public class Scenario : ScriptableObject
     {
-        [field: SerializeField] public List<NerveConnection> NervePoints { get; private set; }
+        [field: SerializeField] public List<NerveConnection> NervePoints { get; private set; } = new List<NerveConnection>();
         [field: SerializeField] public Sprite Sprite { get; private set; }
 
         public override string ToString() {
