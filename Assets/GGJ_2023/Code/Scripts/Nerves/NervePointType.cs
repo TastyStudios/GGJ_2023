@@ -7,6 +7,7 @@
         RightHand = 4,
         LeftLeg = 5,
         RightLeg = 6,
+        Head = 7,
 
         Heat = 100,
         Cold = 101,
