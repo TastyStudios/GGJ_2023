@@ -11,5 +11,6 @@
 
         Heat = 100,
         Cold = 101,
+        Electric = 102,
     }
 }
