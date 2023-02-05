@@ -36,8 +36,9 @@ namespace GGJ_2023
         [SerializeField]
         private List<BodyPain> _painList;
         private Dictionary<NervePointType, BodyPain> _pains;
+        private Music prevMusic;
 
-        private void Awake()
+        private void Start()
         {
             if (Instance != null)
             {
@@ -47,23 +48,21 @@ namespace GGJ_2023
             }
 
             _pains = _painList.ToDictionary(pain => pain.BodyPart);
-            foreach(var pair in _pains)
-            {
-                Debug.Log(pair.Key, pair.Value);
-            }
 
             Instance = this;
 
+            prevMusic = Music.None;
             StartCoroutine(CorrectThenNewScenario());
         }
-        
+
         private void Update()
         {
-            if (_somethingWrong) {
+            if (_somethingWrong)
+            {
                 time -= Time.deltaTime;
                 OnTimeTick?.Invoke(time);
             }
-            
+
             if (time < 0)
             {
                 OnGameEnded?.Invoke(points);
@@ -75,13 +74,24 @@ namespace GGJ_2023
         private IEnumerator CorrectThenNewScenario()
         {
             time = 30;
-            var difficulty = points / 5 + 1;
+            var difficulty = points / 2 + 1;
+            var music = (Music)(Mathf.Min((difficulty - 1) / 2 + 1, 5));
+            if (music != prevMusic)
+            {
+                prevMusic = music;
+                var am = AudioManager.Instance;
+                if (am)
+                {
+                    am.PlayMusic(music, Vector2.zero);
+                }
+            }
+
             if (difficulty > 7)
             {
                 time -= difficulty - 7;
             }
             _somethingWrong = false;
-            foreach(var part in _painList)
+            foreach (var part in _painList)
             {
                 part.Hide();
             }
@@ -122,7 +132,7 @@ namespace GGJ_2023
             }
 
             time = 30;
-            if(difficulty > 7)
+            if (difficulty > 7)
             {
                 time -= difficulty - 7;
             }
@@ -147,7 +157,8 @@ namespace GGJ_2023
             }
         }
 
-        private void IncrementScore() {
+        private void IncrementScore()
+        {
             points++;
             OnScoreChanged?.Invoke(points);
         }
@@ -191,7 +202,8 @@ namespace GGJ_2023
             Application.Quit();
         }
 
-        public int GetScore() {
+        public int GetScore()
+        {
             return points;
         }
     }
