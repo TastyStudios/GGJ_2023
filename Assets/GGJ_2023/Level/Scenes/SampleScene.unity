@@ -678,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156247, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: <NervePointType>k__BackingField
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156248, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: m_RootOrder
@@ -1603,7 +1603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156247, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: <NervePointType>k__BackingField
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156248, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: m_RootOrder
@@ -1763,6 +1763,10 @@ PrefabInstance:
     - target: {fileID: 1252243392577156246, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: m_Name
       value: Heat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252243392577156247, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
+      propertyPath: <NervePointType>k__BackingField
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156248, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: m_RootOrder
@@ -3023,6 +3027,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cold
       objectReference: {fileID: 0}
+    - target: {fileID: 1252243392577156247, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
+      propertyPath: <NervePointType>k__BackingField
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156248, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3790,7 +3798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156247, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: <NervePointType>k__BackingField
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1252243392577156248, guid: f4303c7cc6cdcbc418300a7c88cb3d47, type: 3}
       propertyPath: m_RootOrder
