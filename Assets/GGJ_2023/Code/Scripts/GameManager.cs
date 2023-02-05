@@ -6,6 +6,7 @@ using GGJ_2023.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 namespace GGJ_2023
 {
@@ -20,6 +21,9 @@ namespace GGJ_2023
         private SpriteRenderer screen;
         [SerializeField]
         private List<Scenario> scenarios;
+
+        [SerializeField]
+        private GameObject _correctScreen, _wrongScreen;
 
         private Scenario currentScenario;
         private int points;
@@ -51,6 +55,17 @@ namespace GGJ_2023
             }
         }
 
+        private IEnumerator ShowScreen(GameObject screen)
+        {
+            screen.SetActive(true);
+            yield return new WaitForSeconds(0.25f);
+            screen.SetActive(false);
+            yield return new WaitForSeconds(0.25f);
+            screen.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+            screen.SetActive(false);
+        }
+
         private void ChooseRandomScenario()
         {
             var r = Random.Range(0, scenarios.Count);
@@ -71,15 +86,14 @@ namespace GGJ_2023
             {
                 points++;
                 AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
-                Debug.Log($"Success {points}");
-                ChooseRandomScenario();
+                StartCoroutine(ShowScreen(_correctScreen));
             }
             else
             {
                 AudioManager.Instance.PlaySfx(Sfx.Fail, Vector2.zero);
-                Debug.Log("Failed");
-                ChooseRandomScenario();
+                StartCoroutine(ShowScreen(_wrongScreen));
             }
+            ChooseRandomScenario();
         }
 
         private bool CheckChain(List<NervePoint> nervePoints)
