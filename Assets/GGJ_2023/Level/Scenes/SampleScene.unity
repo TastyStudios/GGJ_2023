@@ -1593,7 +1593,7 @@ MonoBehaviour:
   scoreTextMeshProUGUI: {fileID: 1887590107}
   restartButton: {fileID: 1573677428}
   quitButton: {fileID: 1820192796}
-  topBar: {fileID: 0}
+  topBar: {fileID: 1590242906}
 --- !u!1 &920880653
 GameObject:
   m_ObjectHideFlags: 0
