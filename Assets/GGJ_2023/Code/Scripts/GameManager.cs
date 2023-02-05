@@ -15,7 +15,9 @@ namespace GGJ_2023
         public static GameManager Instance { get; private set; }
 
         public event Action<int> OnGameEnded;
-        public event Action<Scenario> OnScenarioChanged; 
+        public event Action<Scenario> OnScenarioChanged;
+        public event Action<float> OnTimeTick;
+        public event Action<int> OnScoreChanged;
 
         [SerializeField]
         private SpriteRenderer screen;
@@ -47,6 +49,7 @@ namespace GGJ_2023
 
         private void Update() {
             time -= Time.deltaTime;
+            OnTimeTick?.Invoke(time);
 
             if (time < 0) {
                 OnGameEnded?.Invoke(points);
@@ -84,7 +87,7 @@ namespace GGJ_2023
             Debug.Log("CompleteChain");
             if (CheckChain(nervePoints))
             {
-                points++;
+                IncrementScore();
                 AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
                 StartCoroutine(ShowScreen(_correctScreen));
             }
@@ -94,6 +97,11 @@ namespace GGJ_2023
                 StartCoroutine(ShowScreen(_wrongScreen));
             }
             ChooseRandomScenario();
+        }
+
+        private void IncrementScore() {
+            points++;
+            OnScoreChanged?.Invoke(points);
         }
 
         private bool CheckChain(List<NervePoint> nervePoints)
@@ -129,6 +137,10 @@ namespace GGJ_2023
 
         public void Quit() {
             Application.Quit();
+        }
+
+        public int GetScore() {
+            return points;
         }
     }
 }
