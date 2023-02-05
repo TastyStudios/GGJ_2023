@@ -16,6 +16,8 @@ namespace GGJ_2023
 
         public event Action<int> OnGameEnded;
         public event Action<Scenario> OnScenarioChanged;
+        public event Action<float> OnTimeTick;
+        public event Action<int> OnScoreChanged;
 
         [SerializeField]
         private SpriteRenderer screen;
@@ -54,14 +56,14 @@ namespace GGJ_2023
 
             StartCoroutine(CorrectThenNewScenario());
         }
-
+        
         private void Update()
         {
-            if (!_somethingWrong)
-            {
+            if (_somethingWrong) {
                 time -= Time.deltaTime;
+                OnTimeTick?.Invoke(time);
             }
-
+            
             if (time < 0)
             {
                 OnGameEnded?.Invoke(points);
@@ -73,7 +75,7 @@ namespace GGJ_2023
         private IEnumerator CorrectThenNewScenario()
         {
             time = 30;
-            var difficulty = points / 10 + 1;
+            var difficulty = points / 5 + 1;
             if (difficulty > 7)
             {
                 time -= difficulty - 7;
@@ -135,7 +137,7 @@ namespace GGJ_2023
             Debug.Log("CompleteChain");
             if (CheckChain(nervePoints))
             {
-                points++;
+                IncrementScore();
                 AudioManager.Instance.PlaySfx(Sfx.Victory, Vector2.zero);
                 StartCoroutine(CorrectThenNewScenario());
             }
@@ -143,6 +145,11 @@ namespace GGJ_2023
             {
                 AudioManager.Instance.PlaySfx(Sfx.Fail, Vector2.zero);
             }
+        }
+
+        private void IncrementScore() {
+            points++;
+            OnScoreChanged?.Invoke(points);
         }
 
         private bool CheckChain(List<NervePoint> nervePoints)
@@ -182,6 +189,10 @@ namespace GGJ_2023
         public void Quit()
         {
             Application.Quit();
+        }
+
+        public int GetScore() {
+            return points;
         }
     }
 }
