@@ -8,11 +8,14 @@ namespace GGJ_2023.UI {
         [SerializeField] private TextMeshProUGUI scoreTextMeshProUGUI;
         [SerializeField] private Button restartButton;
         [SerializeField] private Button quitButton;
+        [SerializeField] private GameObject topBar;
 
         private GameManager gameManager;
         
         private void Start() {
             gameManager = GameManager.Instance;
+            
+            Hide();
             
             gameManager.OnGameEnded += GameManagerOnOnGameEnded;
             
@@ -30,19 +33,21 @@ namespace GGJ_2023.UI {
 
         private void GameManagerOnOnGameEnded(int score) {
             Show();
-            scoreTextMeshProUGUI.text = $"Score: {score}";
+            scoreTextMeshProUGUI.text = $"Score: <b><color=yellow>{score}";
         }
         
         private void Hide() {
             foreach (Transform childTransform in transform) {
                 childTransform.gameObject.SetActive(false);
             }
+            topBar.SetActive(true);
         }
 
         private void Show() {
             foreach (Transform childTransform in transform) {
                 childTransform.gameObject.SetActive(true);
             }
+            topBar.SetActive(false);
         }
     }
 }
