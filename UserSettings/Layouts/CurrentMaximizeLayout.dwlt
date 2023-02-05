@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 108
+  controlID: 15640
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1920, y: 1080}
+  m_TargetSize: {x: 3840, y: 2160}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -69,16 +69,16 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 06000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -960
-    m_HBaseRangeMax: 960
-    m_VBaseRangeMin: -540
-    m_VBaseRangeMax: 540
+    m_HBaseRangeMin: -1920
+    m_HBaseRangeMax: 1920
+    m_VBaseRangeMin: -1080
+    m_VBaseRangeMax: 1080
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
       y: 21
       width: 1913
       height: 683
-    m_Scale: {x: 0.6324074, y: 0.6324074}
+    m_Scale: {x: 0.3162037, y: 0.3162037}
     m_Translation: {x: 956.5, y: 341.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -106,12 +106,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1512.4744
-      y: -540
-      width: 3024.9487
-      height: 1080
+      x: -3024.9487
+      y: -1080
+      width: 6049.8975
+      height: 2160
     m_MinimalGUI: 1
-  m_defaultScale: 0.6324074
+  m_defaultScale: 0.3162037
   m_LastWindowPixelSize: {x: 1913, y: 704}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 109
+  controlID: 15641
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -548,9 +548,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 842.0524, y: 1052.4299, z: -0.9324616}
+    m_Target: {x: 1920, y: 1080, z: 0}
     speed: 2
-    m_Value: {x: 842.0524, y: 1052.4299, z: -0.9324616}
+    m_Value: {x: 1920, y: 1080, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -601,9 +601,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 341.18533
+    m_Target: 2202.9072
     speed: 2
-    m_Value: 341.18533
+    m_Value: 2202.9072
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -685,7 +685,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 56774
+  m_LastSelectedObjectID: -124516
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 56
+  controlID: 15597
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -768,9 +768,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c6dd0000
-      m_LastClickedID: 56774
-      m_ExpandedIDs: 9628ffff6468ffffde72ffff8473ffff7877ffffb47fffff5a80ffff5084ffff8efaffff886f0000d06f0000da6f0000fc6f000086d7000018d8000028d8000062d8000098dd0000e4dd00002ede000038de0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 44e9fdff5ceffdff2afffdff601afeff3e1efefff435feffd047feff564efeff2e55feffac56feffaa58feffa068feff5e69feffd86dfeff5278feffeea4feff36a8fefff2aefeff9628ffff6468ffffde72ffff8473ffff7877ffffb47fffff5a80ffff5084ffff8efaffff886f0000d06f0000da6f0000fc6f000086d7000018d8000028d8000062d8000098dd0000e4dd00002ede000038de00002efd000080fd000098fd0000d8fd0000e2fd000004fe00000efe00004afe0000201e01006a1e0100741e0100865701000c5c01005e5c01002e5d0100665d0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -862,7 +862,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/GGJ_2023/Art/Fonts
+    - Assets/GGJ_2023/Code/Scripts/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -876,7 +876,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 845b0000
     m_LastClickedID: 23428
-    m_ExpandedIDs: 000000000473000006730000087300000a730000
+    m_ExpandedIDs: ffffffff000000000473000006730000767300007873000092730000aa7600001eb00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -902,23 +902,23 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c6dd0000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000000473000006730000767300007873000092730000aa7600001eb00000
+    m_ExpandedIDs: ffffffff0000000004730000067300000a730000787300007a73000092730000667500001eb000005c570100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: PlayButtonUI
+      m_OriginalName: PlayButtonUI
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 89512
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -929,8 +929,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c6dd0000
-    m_LastClickedInstanceID: 56774
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
