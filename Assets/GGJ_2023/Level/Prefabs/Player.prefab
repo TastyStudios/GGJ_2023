@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165452005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalPosition: {x: 0.08, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -207,11 +207,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6294223083705459932}
   - component: {fileID: 6294223083705459935}
-  - component: {fileID: 6294223083705459934}
   - component: {fileID: 6294223083705459929}
   - component: {fileID: 6294223083705459928}
   - component: {fileID: 6294223083705459933}
   - component: {fileID: 6294223083705459922}
+  - component: {fileID: 7995640183481186213}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -291,22 +291,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6294223083705459934
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294223083705459931}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &6294223083705459929
 Rigidbody2D:
   serializedVersion: 4
@@ -326,7 +310,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6294223083705459928
 MonoBehaviour:
@@ -340,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c311539c1e9475ca9b98f3bc7aa9f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 450
+  m_JumpForce: 350
   m_MovementSmoothing: 0.05
   speed: 5
   m_AirControl: 1
@@ -349,6 +333,8 @@ MonoBehaviour:
     m_Bits: 1
   m_GroundCheck: {fileID: 6294223083807483138}
   characterInput: {fileID: 6294223083705459933}
+  _airMaterial: {fileID: 6200000, guid: c5f20dbf773677548a381a2ccc7c1b39, type: 2}
+  _groundMaterial: {fileID: 6200000, guid: 5e40481573a8dae4b9547443cb746635, type: 2}
 --- !u!114 &6294223083705459933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +362,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nervLinePrefab: {fileID: 9091939440949679864, guid: c02983ddbc284604f8ef38561ee2a692, type: 3}
+--- !u!70 &7995640183481186213
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294223083705459931}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.53, y: 1}
+  m_Direction: 0
 --- !u!1 &6294223083734393454
 GameObject:
   m_ObjectHideFlags: 0
