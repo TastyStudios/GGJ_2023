@@ -16,12 +16,16 @@ namespace GGJ_2023.UI {
             gameManager.OnTimeTick += GameManager_OnTimeTick;
         }
 
+        private void OnDisable() {
+            gameManager.OnTimeTick -= GameManager_OnTimeTick;
+        }
+
         private void GameManager_OnTimeTick(float obj) {
             UpdateUI(obj);
         }
 
         private void UpdateUI(float obj) {
-            textMeshProUGUI.text = $"Time: {obj.ToString("F1")}";
+            textMeshProUGUI.text = $"Time: <mspace=0.8em>{obj.ToString("F1")}";
         }
     }
 }
