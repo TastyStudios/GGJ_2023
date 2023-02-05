@@ -94,8 +94,7 @@ namespace GGJ_2023
             yield return new WaitForSeconds(0.25f);
             obj.SetActive(true);
             yield return new WaitForSeconds(0.5f);
-            obj.SetActive(true);
-
+            obj.SetActive(false);
         }
 
         private IEnumerator CorrectThenNewScenario()
