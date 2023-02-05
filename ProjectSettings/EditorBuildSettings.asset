@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GGJ_2023/Level/Scenes/Game.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/GGJ_2023/Level/Scenes/HowToPlay.unity
+    guid: ded342c6754b395489a71976097b9476
   - enabled: 1
     path: Assets/GGJ_2023/Level/Scenes/LoadingScreen.unity
     guid: 31c73e2d3763cce4ab498d3b44116626
+  - enabled: 1
+    path: Assets/GGJ_2023/Level/Scenes/Game.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
